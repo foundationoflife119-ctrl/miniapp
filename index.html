@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Foundation Book Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      color: #e5e7eb;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 28px;
+      font-size: 28px;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #e5e7eb;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      background: #020617;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:active {
+      background: #1e40af;
+    }
+
+    #output {
+      margin-top: 30px;
+      padding: 18px;
+      background: #020617;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      font-size: 14px;
+      min-height: 220px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Foundation Book Tool</h1>
+
+    <label for="length">Chapter Length</label>
+    <select id="length">
+      <option value="short">Short</option>
+      <option value="medium">Medium</option>
+      <option value="long">Long</option>
+    </select>
+
+    <label for="tone">Tone</label>
+    <select id="tone">
+      <option value="raw">Raw</option>
+      <option value="calm">Calm</option>
+      <option value="harsh">Harsh</option>
+    </select>
+
+    <label for="audience">Audience</label>
+    <select id="audience">
+      <option value="beginner">Beginner</option>
+      <option value="struggling">Struggling</option>
+      <option value="disciplined">Disciplined</option>
+    </select>
+
+    <button onclick="generateChapter()">Generate Chapter</button>
+
+    <div id="output">Click "Generate Chapter" to create your chapter framework.</div>
+
+    <div class="footer">Foundation System • Stable MVP</div>
+  </div>
+
+  <script>
+    function generateChapter() {
+      const length = document.getElementById("length").value;
+      const tone = document.getElementById("tone").value;
+      const audience = document.getElementById("audience").value;
+
+      const sizeMap = {
+        short: "600–800 words",
+        medium: "1200–1500 words",
+        long: "2000+ words"
+      };
+
+      const toneMap = {
+        raw: "Direct, raw, reality-based. No sugarcoating.",
+        calm: "Calm, reassuring, thoughtful and supportive.",
+        harsh: "Strict, uncomfortable truths with discipline."
+      };
+
+      const audienceMap = {
+        beginner: "Someone starting from zero, unsure and confused.",
+        struggling: "Someone stuck, failing repeatedly, losing hope.",
+        disciplined: "Someone consistent, focused, aiming higher."
+      };
+
+      const outputText = `
+CHAPTER GENERATION FRAMEWORK
+
+Target Length:
+${sizeMap[length]}
+
+Tone:
+${toneMap[tone]}
+
+Audience:
+${audienceMap[audience]}
+
+--------------------------------------------------
+
+1. STRONG OPENING
+- Relatable pain or truth for the audience
+- Emotional or reality-based hook
+
+2. CORE MESSAGE
+- Mindset that must change
+- Why current thinking is failing
+
+3. PRACTICAL BREAKDOWN
+- 3 to 5 clear actions
+- Simple real-life examples
+
+4. REALITY CHECK
+- Truth the reader avoids
+- Cost of staying the same
+
+5. POWERFUL ENDING
+- Motivation with responsibility
+- Clear next step
+
+--------------------------------------------------
+
+INSTRUCTION:
+Write the full chapter using this structure.
+Maintain the selected tone and audience.
+`;
+
+      document.getElementById("output").innerText = outputText;
+    }
+  </script>
+</body>
+  </html>
