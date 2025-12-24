@@ -1,88 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Easy book AI Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Foundation Book Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
-      font-family: Arial, gramond;
+      font-family: Arial, sans-serif;
       background: #0f172a;
       color: #e5e7eb;
       padding: 20px;
     }
-    h1 { text-align: center; }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+
     button {
       width: 100%;
       padding: 14px;
-      margin: 10px 0;
+      margin-top: 20px;
       font-size: 16px;
       border: none;
       border-radius: 8px;
       background: #2563eb;
       color: white;
+      cursor: pointer;
     }
+
+    button:active {
+      background: #1e40af;
+    }
+
     #output {
-      margin-top: 20px;
+      margin-top: 25px;
       padding: 15px;
       background: #020617;
       border-radius: 8px;
-      min-height: 120px;
+      min-height: 200px;
       white-space: pre-wrap;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: 0.6;
     }
   </style>
 </head>
 
 <body>
 
-<h1>Easy book AI Tool</h1>
-
-<button id="btn">Write Chapter</button>
-
-<div id="output">Output will appear here</div>
-
-<script>
-const API_KEY = "gen-lang-client-0506784858";
-
-document.getElementById("btn").addEventListener("click", async () => {
-  const out = document.getElementById("output");
-  out.innerText = "Generating...";
-
-  try {
-    const res = await fetch(
-      "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=" + API_KEY,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [
-                { text: "Write one powerful motivational chapter in clear simple English." }
-              ]
-            }
-          ]
-        })
-      }
-    );
-
-    const data = await res.json();
-    console.log(data);
-
-    // 🔥 SAFE TEXT EXTRACTION
-    let finalText = "";
-
-    if (data.candidates && data.candidates.length > 0) {
-      const parts = data.candidates[0].content.parts;
-      for (let p of parts) {
-        if (p.text) finalText += p.text + "\n\n";
-      }
-    }
-
-    out.innerText = finalText || "AI responded, but text was empty.";
-  } catch (err) {
-    out.innerText = "API / Network error.";
-  }
-});
-  </script>
+  <h1>Foundation Book Tool</
