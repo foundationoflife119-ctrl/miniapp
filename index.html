@@ -1,16 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mini App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="font-family:Arial; text-align:center; padding:40px;">
-  <h1>Mini App Live</h1>
-  <p>Foundation of Life – Mini Web App</p>
+<meta charset="UTF-8">
+<title>Foundation Mini App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <button onclick="alert('Create Full Book Prompt Triggered')">
-    Create Full Book
-  </button>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+}
+button:active {
+  background: #1e40af;
+}
+#output {
+  margin-top: 20px;
+  padding: 15px;
+  background: #020617;
+  border-radius: 8px;
+  min-height: 120px;
+  white-space: pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📘 Foundation AI Tool</h1>
+
+<button onclick="runPrompt('book')">Create Full Book</button>
+<button onclick="runPrompt('outline')">Write Book Outline</button>
+<button onclick="runPrompt('chapter')">Write Chapter</button>
+<button onclick="runPrompt('rewrite')">Rewrite / Improve Text</button>
+
+<div id="output">Response will appear here...</div>
+
+<script>
+function runPrompt(type) {
+  let prompt = "";
+
+  if (type === "book") {
+    prompt = "Create a complete non-fiction book with title, chapters, and conclusion in a motivational, raw human tone.";
+  }
+  if (type === "outline") {
+    prompt = "Generate a detailed book outline with chapter-wise breakdown.";
+  }
+  if (type === "chapter") {
+    prompt = "Write a powerful chapter with real-life tone, clarity, and depth.";
+  }
+  if (type === "rewrite") {
+    prompt = "Rewrite the given text to make it clearer, stronger, and more impactful.";
+  }
+
+  document.getElementById("output").innerText =
+    "PROMPT SENT:\n\n" + prompt + "\n\n(Next step: connect to AI API)";
+}
+</script>
+
 </body>
-</html>
+  </html>
