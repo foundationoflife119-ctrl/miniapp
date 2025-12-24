@@ -1,22 +1,50 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Foundation Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 20px;
+    }
+    h1 { text-align: center; }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+    }
+    #output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #020617;
+      border-radius: 8px;
+      min-height: 120px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Foundation AI Tool</h1>
+
+<button onclick="runPrompt('chapter')">Write Chapter</button>
+
+<div id="output">Output will appear here</div>
+
 <script>
-const API_KEY = gen-lang-client-0506784858;
+const API_KEY = gen-lang-client-0506784858";
 
 async function runPrompt(type) {
-  let prompt = "";
-
-  if (type === "book") {
-    prompt = "Create a complete motivational non-fiction book.";
-  }
-  if (type === "outline") {
-    prompt = "Create a detailed book outline.";
-  }
-  if (type === "chapter") {
-    prompt = "Write one powerful chapter.";
-  }
-  if (type === "rewrite") {
-    prompt = "Rewrite the text to make it stronger.";
-  }
-
   document.getElementById("output").innerText = "Generating...";
 
   const response = await fetch(
@@ -25,13 +53,17 @@ async function runPrompt(type) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
+        contents: [{ parts: [{ text: "Write one powerful motivational chapter." }] }]
       })
     }
   );
 
   const data = await response.json();
+
   document.getElementById("output").innerText =
     data.candidates[0].content.parts[0].text;
 }
 </script>
+
+</body>
+  </html>
