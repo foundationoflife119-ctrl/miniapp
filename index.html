@@ -58,7 +58,9 @@ document.getElementById("btn").addEventListener("click", async () => {
           contents: [
             {
               role: "user",
-              parts: [{ text: "Write one powerful motivational chapter." }]
+              parts: [
+                { text: "Write one powerful motivational chapter in clear simple English." }
+              ]
             }
           ]
         })
@@ -68,17 +70,19 @@ document.getElementById("btn").addEventListener("click", async () => {
     const data = await res.json();
     console.log(data);
 
-    const text =
-      data.candidates &&
-      data.candidates[0] &&
-      data.candidates[0].content &&
-      data.candidates[0].content.parts &&
-      data.candidates[0].content.parts[0] &&
-      data.candidates[0].content.parts[0].text;
+    // 🔥 SAFE TEXT EXTRACTION
+    let finalText = "";
 
-    out.innerText = text || "AI responded but no text found.";
+    if (data.candidates && data.candidates.length > 0) {
+      const parts = data.candidates[0].content.parts;
+      for (let p of parts) {
+        if (p.text) finalText += p.text + "\n\n";
+      }
+    }
+
+    out.innerText = finalText || "AI responded, but text was empty.";
   } catch (err) {
-    out.innerText = "API ERROR. Check key or internet.";
+    out.innerText = "API / Network error.";
   }
 });
-</script>
+  </script>
