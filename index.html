@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Book AI Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 14px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    #output {
+      margin-top: 30px;
+      padding: 20px;
+      background: #020617;
+      border-radius: 10px;
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
 
+  <h1>Easy Book AI Tool</h1>
+  <p>Netlify + GitHub connected successfully</p>
+
+  <button onclick="test()">Write Chapter</button>
+
+  <div id="output">Output will appear here</div>
+
+  <script>
+    function test() {
+      document.getElementById("output").innerText =
+        "✅ Site working.\nNext step: AI connect.";
+    }
+  </script>
+
+</body>
+  </html>
